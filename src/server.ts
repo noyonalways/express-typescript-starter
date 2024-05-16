@@ -12,7 +12,7 @@ async function main() {
     })
     .then(() => {
       // eslint-disable-next-line no-console
-      console.log("Connected to database");
+      console.log("Connected to database".cyan);
     });
 }
 
@@ -24,5 +24,7 @@ main().catch((err) => {
 
 server.listen(config.port, () => {
   // eslint-disable-next-line no-console
-  console.log(`⚡Server is listening on http://localhost:${config.port}`);
+  console.log(
+    `⚡Server is listening on http://localhost:${config.port}`.yellow,
+  );
 });

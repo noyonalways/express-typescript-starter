@@ -2,6 +2,7 @@ import express from "express";
 import helmet from "helmet";
 import cors from "cors";
 import morgan from "morgan";
+import "colors";
 
 // local imports
 import rootRoutes from "./routes";

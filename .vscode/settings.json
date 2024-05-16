@@ -1,0 +1,7 @@
+{
+  "workbench.colorTheme": "Learn with Sumit - Professional",
+  "workbench.iconTheme": "material-icon-theme",
+  "editor.fontFamily": "Fira Code",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+}

@@ -5,7 +5,7 @@ import morgan from "morgan";
 import "colors";
 
 // local imports
-import rootRoutes from "./routes";
+import applicationRoutes from "./routes";
 
 const app = express();
 
@@ -15,7 +15,7 @@ app.use(helmet());
 app.use(cors());
 app.use(express.json());
 
-// routes
-app.use(rootRoutes);
+// application routes
+app.use(applicationRoutes);
 
 export default app;

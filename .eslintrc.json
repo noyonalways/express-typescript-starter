@@ -18,10 +18,18 @@
     "@typescript-eslint"
   ],
   "rules": {
-    "@typescript-eslint/no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "^_",
+        "varsIgnorePattern": "^_",
+        "caughtErrorsIgnorePattern": "^_"
+      }
+    ],
     "no-unused-expressions": "error",
-    "no-console": "warn",
     "prefer-const": "error",
+    "no-console": "warn",
     "no-undef": "error"
   },
   "globals": {

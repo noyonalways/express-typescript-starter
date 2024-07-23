@@ -1,30 +1,37 @@
-import http from "http";
-import config from "./config";
+import { Server } from "http";
 import app from "./app/app";
-import mongoose from "mongoose";
+import config from "./config";
+import connectToDatabase from "./db";
 
-const server = http.createServer(app);
+let server: Server;
 
 async function main() {
-  await mongoose
-    .connect(config.database_url as string, {
-      serverSelectionTimeoutMS: 5000,
-    })
-    .then(() => {
-      // eslint-disable-next-line no-console
-      console.log("Connected to database".cyan);
-    });
+  // database connection
+  await connectToDatabase();
+
+  server = app.listen(config.port, () => {
+    // eslint-disable-next-line no-console
+    console.log(`Server is listening on port ${config.port}`.green);
+  });
 }
 
-main().catch((err) => {
+main();
+
+// handle unhandledRejection
+process.on("unhandledRejection", () => {
   // eslint-disable-next-line no-console
-  console.log(err);
+  console.log(`❌ unhandledRejection is detected, shutting down the server...`);
+  if (server) {
+    server.close(() => {
+      process.exit(1);
+    });
+  }
   process.exit(1);
 });
 
-server.listen(config.port, () => {
+// handle uncaughtException
+process.on("uncaughtException", () => {
   // eslint-disable-next-line no-console
-  console.log(
-    `⚡Server is listening on http://localhost:${config.port}`.yellow,
-  );
+  console.log(`❌ uncaughtException is detected, shutting down the server...`);
+  process.exit(1);
 });

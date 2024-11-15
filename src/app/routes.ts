@@ -1,10 +1,10 @@
+import mainRoutes from "@/routes";
 import { Request, Response, Router } from "express";
-import mainRoutes from "../routes";
 import { errorHandler } from "./errorHandler";
 
 const router: Router = Router();
 
-router.get("/", (req: Request, res: Response) => {
+router.get("/", (_req: Request, res: Response) => {
   res.status(200).json({
     message: "Hello World!",
   });

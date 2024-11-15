@@ -1,14 +1,16 @@
-import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
-import { ZodError } from "zod";
-import config from "../config";
+import config from "@/config";
 import {
   AppError,
   handleMongooseCastError,
   handleMongooseDuplicateIdError,
   handleMongooseValidationError,
   handleZodError,
-} from "../errors";
-import { TErrorMessages } from "../interface/error";
+} from "@/errors";
+import { TErrorMessages } from "@/interface/error";
+import { ErrorRequestHandler, NextFunction, Request, Response } from "express";
+import httpStatus from "http-status";
+import { JsonWebTokenError } from "jsonwebtoken";
+import { ZodError } from "zod";
 
 // Not found Error Handler
 const notFound = (_req: Request, res: Response, _next: NextFunction) => {

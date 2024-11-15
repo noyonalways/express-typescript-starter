@@ -19,6 +19,7 @@
     "prefix": "exr",
     "body": [
       "import { Router } from \"express\";",
+      "",
       "const router: Router = Router();",
       "",
       "router.route(\"/\").get().post();",
